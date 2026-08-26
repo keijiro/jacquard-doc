@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacquard — User Guide</title>
+<meta name="description" content="Jacquard is an experimental tile-based music sequencer built with Unity. Sequences are built by placing and stacking tiles on a two-dimensional grid.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png" sizes="16x16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<meta property="og:title" content="Jacquard — User Guide">
+<meta property="og:description" content="An experimental tile-based music sequencer built with Unity.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/screenshot.png">
+</head>
+<body>
+
+<div class="backdrop" aria-hidden="true"></div>
+
+<div class="page">
+
+<main>
+
+  <section class="hero">
+    <h1>Jacquard — User Guide</h1>
+
+    <figure class="shot">
+      <img src="assets/screenshot.png" alt="The Jacquard interface: a score of tiles on a grid, with a panel of sound parameters at the right" width="2216" height="1412">
+    </figure>
+  </section>
+
+  <section class="panel">
+    <p>Instead of arranging notes on conventional tracks, Jacquard lets you build
+    sequences by placing and stacking tiles on a two-dimensional grid. Notes, parameter
+    locks, gates, and branches can be combined to create patterns that evolve and change
+    as they repeat.</p>
+
+    <p>The project takes inspiration from trackers, generative sequencers, and hardware
+    grooveboxes, while exploring a more visual and spatial approach to sequencing.</p>
+  </section>
+
+  <nav class="panel contents" aria-label="Contents">
+    <p class="label">Contents</p>
+    <ol>
+      <li><a href="#web">Try It on the Web</a></li>
+      <li><a href="#concepts">Basic Concepts</a></li>
+      <li><a href="#tips">Useful Tips</a></li>
+      <li><a href="#pro-tips">Pro Tips</a></li>
+      <li><a href="#your-own">Make It Your Own</a></li>
+    </ol>
+  </nav>
+
+  <section class="panel">
+    <h2 id="web">Try It on the Web</h2>
+
+    <p>A Web build is available, so you can try Jacquard in a browser without installing
+    anything.</p>
+
+    <a class="address" href="https://www.keijiro.tokyo/jacquard-web/">www.keijiro.tokyo/jacquard-web/</a>
+
+    <div class="note">
+      <p>Note that the Web version keeps saved scores in the browser's storage, which the
+      browser may clear at any time. There is currently no way to back them up as external
+      files, so treat anything made there as temporary.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 id="concepts">Basic Concepts</h2>
+
+    <p>At its simplest, Jacquard works like a regular step sequencer. Place note tiles
+    along the timeline to create a repeating sequence.</p>
+
+    <figure>
+      <img src="assets/figures/01-steps.png" width="356" height="52" alt="A simple step sequence with several note tiles">
+    </figure>
+
+    <p>Tiles can also be stacked vertically. Notes in the same stack are played together,
+    so stacking C, E, and G creates a C major chord.</p>
+
+    <figure>
+      <img src="assets/figures/02-chord.png" width="220" height="124" alt="C, E, and G note tiles stacked vertically">
+    </figure>
+
+    <p>Stacks can contain more than notes. Parameter Lock tiles can be added to change
+    sound parameters for a particular step.</p>
+
+    <figure>
+      <img src="assets/figures/03-lock.png" width="220" height="160" alt="A note stack with a Parameter Lock tile">
+    </figure>
+
+    <p>There are also conditional tiles that control whether other tiles in the stack are
+    triggered. For example, a Chance Gate can make a note play only 50% of the time.</p>
+
+    <figure>
+      <img src="assets/figures/04-chance.png" width="220" height="88" alt="A note controlled by a 50% Chance Gate">
+    </figure>
+
+    <p>The order of tiles in a stack matters. A gate affects the tiles that follow it,
+    allowing different parts of the same stack to behave differently.</p>
+
+    <p>For example, C and E can play every time while G is triggered only 50% of the
+    time.</p>
+
+    <figure>
+      <img src="assets/figures/05-partial-chance.png" width="220" height="160" alt="C and E followed by a 50% Chance Gate and G">
+    </figure>
+
+    <p>Cycle Gates add another kind of condition. They can trigger tiles only on specific
+    repetitions of the sequence, making it easy to create patterns that change over
+    several loops.</p>
+
+    <figure>
+      <img src="assets/figures/06-cycle.png" width="220" height="88" alt="A Cycle Gate triggering a note on a specific loop">
+    </figure>
+
+    <p>Sequences do not have to follow a straight path either. Jump tiles can redirect
+    playback to another position, creating branches and alternative routes through a
+    pattern.</p>
+
+    <figure>
+      <img src="assets/figures/07-jump.png" width="322" height="160" alt="A sequence containing a Jump tile and a branching playback path">
+    </figure>
+
+    <p>By combining stacks, parameter locks, gates, and jumps, a small grid can produce
+    sequences with much more structure and variation than a conventional repeating
+    pattern.</p>
+
+    <figure>
+      <img src="assets/figures/08-complex.png" width="424" height="268" alt="A complex example combining notes, stacked tiles, gates, parameter locks, and jumps">
+    </figure>
+  </section>
+
+  <section class="panel">
+    <h2 id="tips">Useful Tips</h2>
+
+    <h3>Copying a stack</h3>
+
+    <p>Double-click a tile to copy its entire stack to the copy buffer. Double-click an
+    empty slot to paste the buffered stack there.</p>
+
+    <p>This makes it quick to duplicate chords, parameter locks, or more complex stacks
+    without rebuilding them tile by tile.</p>
+
+    <h3>Switching scores while playing</h3>
+
+    <p>When a score is already playing, pressing a <span class="ui">Load</span> button
+    does not switch scores immediately. Instead, the change is queued until the master
+    lane reaches the end of its loop.</p>
+
+    <p>This allows one score to transition into another without interrupting the current
+    phrase.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="pro-tips">Pro Tips</h2>
+
+    <h3>Several lanes in one channel</h3>
+
+    <p>A single channel can contain multiple lanes. Each lane runs independently, so they
+    can have different lengths and serve different purposes.</p>
+
+    <p>One simple use is polyrhythm: lanes with different loop lengths gradually shift
+    against each other and create longer evolving patterns.</p>
+
+    <figure>
+      <img src="assets/figures/09-polyrhythm.png" width="356" height="124" alt="Two lanes with different loop lengths creating a polyrhythm">
+    </figure>
+
+    <p>Another useful technique is to dedicate a lane to accents or other periodic
+    parameter changes.</p>
+
+    <figure>
+      <img src="assets/figures/10-accent.png" width="356" height="124" alt="A note lane combined with a shorter accent lane">
+    </figure>
+
+    <p>When multiple lanes exist in the same channel, they are applied from top to bottom.
+    This ordering is important when using Parameter Locks: a lane that changes parameters
+    should generally be placed above the lane whose notes use those parameters.</p>
+
+    <figure>
+      <img src="assets/figures/11-lock-lane.png" width="220" height="124" alt="Parameter Lock lane above a note lane">
+    </figure>
+
+    <h3>The master lane</h3>
+
+    <p>The first lane of Channel 1 has a special role: it is the <strong>master
+    lane</strong>.</p>
+
+    <p>Its loop defines the synchronization boundary for the entire score. Queued score
+    changes are applied when the master lane loops, and it also determines when newly
+    started lanes begin playback.</p>
+
+    <p>In other words, the master lane acts as the musical clock for larger structural
+    changes, making it possible to switch patterns and introduce parts while keeping
+    everything aligned.</p>
+
+    <figure>
+      <img src="assets/figures/12-master.png" width="356" height="232" alt="Master lane controlling synchronized score switching and lane start timing">
+    </figure>
+
+    <h3>Where the scores live</h3>
+
+    <p>Every score is a plain text file in a single folder, and the folder can be reached
+    from outside the app. On desktop, the <span class="ui">Open score folder</span> button
+    on the System panel reveals it in the file manager. On iOS, the same folder appears in
+    the Files app under <strong>On My iPhone</strong> (or <strong>On My iPad</strong>), as
+    Jacquard's own folder.</p>
+
+    <p>From there scores can be copied, renamed, backed up, or moved between devices. A
+    file dropped into the folder simply appears in the score list, since the list is that
+    folder read out rather than anything the app remembers.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="your-own">Make It Your Own</h2>
+
+    <p>Jacquard was developed entirely with Unity and Claude Code, and everything needed
+    to understand and modify the project is included in
+    <a href="https://github.com/keijiro/Jacquard">its repository</a>.</p>
+
+    <p>That means you don't have to stop at the features provided here. You can add new
+    tile types, change the sequencing rules, extend the sound engine, redesign the
+    interface, or take the project in a completely different direction.</p>
+
+    <p>If you find something missing—or simply want something to work differently—don't
+    hesitate to change it.</p>
+
+    <p>Make Jacquard your own.</p>
+  </section>
+
+</main>
+
+<aside class="rail">
+  <div class="rail-panel">
+    <div class="group">
+      <p class="label">Documentation</p>
+      <a href="./" aria-current="page">User Guide</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+    <div class="group">
+      <a href="https://www.keijiro.tokyo/jacquard-web/">Try it in a browser <span class="out" aria-hidden="true">&#8599;</span></a>
+      <a href="https://github.com/keijiro/Jacquard">GitHub <span class="out" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</aside>
+
+</div>
+
+</body>
+</html>
