@@ -50,14 +50,22 @@ on a display that has the pixels for it.
   air around it. The visualizer is off for the panel crops: silent it draws one flat
   line across the middle of the screen, and a line through the margin of a crop reads as
   an artefact rather than as the app. It is on for the whole screen, where it *is* the
-  app
+  app. The whole screen is taken at 880 by 640 units, which is very nearly the narrowest
+  the transport row fits across — a screen wider than that is a picture of the app shown
+  smaller than the app, and this page has 832 pixels to put it in
 
 Three of them carry labels — the whole screen, the parts of a lane, and the nine tiles —
 because the paragraph beside each of those names what it points at. The labels are not
 drawn on afterwards: they go on the screen as one more layer of the app's own interface,
-set in Jura at the caption size in the caption grey, with leaders in axis-aligned
-segments the way the plane draws a jump link, and are captured with everything else. So
-the ink in a label is the ink the app would have used.
+set in Jura in the caption grey, with leaders in axis-aligned segments the way the plane
+draws a jump link, and are captured with everything else. So the ink in a label is the
+ink the app would have used.
+
+The two figures set their labels at the caption size, which is what the app would have
+set them at. The whole screen sets its own at 14 units instead, half again as large as
+the chrome around it, because a label there is not one more thing on the screen being
+described: it is the page speaking about the picture, and it is read at the size this
+page's own captions are read at rather than at the size the app's are.
 
 Publishing
 ----------
