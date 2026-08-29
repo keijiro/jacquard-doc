@@ -33,13 +33,21 @@
   </section>
 
   <section class="panel">
-    <p>Instead of arranging notes on conventional tracks, Jacquard lets you build
-    sequences by placing and stacking tiles on a two-dimensional grid. Notes, parameter
-    locks, gates, and branches can be combined to create patterns that evolve and change
-    as they repeat.</p>
+    <h2 id="intro">Introduction</h2>
 
-    <p>The project takes inspiration from trackers, generative sequencers, and hardware
-    grooveboxes, while exploring a more visual and spatial approach to sequencing.</p>
+    <p>Jacquard is an experimental tile-based music sequencer. Instead of arranging notes
+    on conventional tracks, you build sequences by placing and stacking tiles on a
+    two-dimensional grid. Notes, parameter locks, gates, and branches can be combined to
+    create patterns that evolve and change as they repeat.</p>
+
+    <p>This guide covers the whole app. <a href="#concepts">Basic Concepts</a> explains
+    what the tiles do and how playback reads them off the grid; from
+    <a href="#screen">The Screen</a> onwards the guide works through what is on screen
+    piece by piece — the score plane, the panels, and everything each of them sets.</p>
+
+    <p>It does not have to be read front to back. If you would rather start by playing,
+    open the <a href="#web">Web build</a>, put a few note tiles on the plane and press
+    Play; the rest of the guide reads more easily once something is sounding.</p>
   </section>
 
   <section class="panel">
@@ -127,14 +135,15 @@
   <section class="panel">
     <h2 id="screen">The Screen</h2>
 
-    <p>The transport row runs across the top and the score plane fills everything under
-    it. Nothing else is on screen until it is asked for: the five switches on the row
-    raise the panels, and one panel — the Tile panel — comes up by itself and follows the
-    cursor.</p>
-
     <figure>
       <img src="assets/screens/screen.png" width="1200" height="750" alt="The whole screen: the transport row across the top, the score plane under it and the Tile panel at the right, each named">
     </figure>
+
+    <h3>Past the edge of the screen</h3>
+
+    <p>On a phone or a tablet the transport row holds more than the screen does, so it is
+    dragged sideways to reach the end of it. A column of panels longer than the screen is
+    dragged up and down the same way.</p>
 
     <h3>The transport row</h3>
 
@@ -149,82 +158,35 @@
       </tr>
       <tr>
         <td><span class="ui">Channels</span></td>
-        <td>Raises a row per channel, with a Mute and a Solo switch on each. A solo
-        overrules every mute, and both are saved with the score. Select on a row puts the
-        cursor on the Channel Start tile that names it</td>
+        <td>Opens the <a href="#channels">Channels</a> panel</td>
       </tr>
       <tr>
         <td><span class="ui">Send FX</span></td>
-        <td>Raises the reverb and the delay</td>
+        <td>Opens the <a href="#send">Send FX</a> panel</td>
       </tr>
       <tr>
         <td><span class="ui">Live FX</span></td>
-        <td>Raises the twelve performance buttons</td>
+        <td>Opens the <a href="#live">Live FX</a> panel</td>
       </tr>
       <tr>
         <td><span class="ui">Global</span></td>
-        <td>Raises the scale and the limiter</td>
+        <td>Opens the <a href="#global">Global Settings</a> panel</td>
       </tr>
       <tr>
         <td><span class="ui">System</span></td>
-        <td>Raises what is set about the app rather than about the piece</td>
+        <td>Opens the <a href="#system">System Settings</a> panel</td>
       </tr>
       <tr>
         <td>The score name</td>
-        <td>The score folder read out, stepped through with the arrows beside it, with
-        <span class="ui">Save</span> and <span class="ui">Load</span> after it</td>
+        <td>The score folder stepped through with the arrows beside it, with
+        <span class="ui">Save</span> and <span class="ui">Load</span> after it — see
+        <a href="#files">Scores and Files</a></td>
       </tr>
       <tr>
         <td><span class="ui">?</span></td>
         <td>Opens this guide in a browser</td>
       </tr>
     </table>
-
-    <p>On a phone or a tablet the row holds more than the screen does, so it is dragged
-    sideways to reach the end of it. The <span class="ui">?</span> is the first thing past
-    the edge.</p>
-
-    <h3>Where the panels stand</h3>
-
-    <table>
-      <tr>
-        <td>Tile</td>
-        <td>The right edge, outermost. Everything the cell under the cursor decides</td>
-      </tr>
-      <tr>
-        <td>Send FX</td>
-        <td>The right edge, inside the cursor's — the amount a channel sends is a row of
-        its sound, and this is what it is sent to</td>
-      </tr>
-      <tr>
-        <td>Channels</td>
-        <td>The left edge</td>
-      </tr>
-      <tr>
-        <td>Global, System</td>
-        <td>The middle, since neither is read against anything on the plane</td>
-      </tr>
-      <tr>
-        <td>Live FX</td>
-        <td>Across the bottom, where the hands already are</td>
-      </tr>
-    </table>
-
-    <p>A column of panels longer than the screen is dragged up and down, the same way the
-    transport row is dragged sideways.</p>
-
-    <h3>The Tile panel</h3>
-
-    <p>There is no window to open and nothing to keep in step with the score: the panel is
-    simply whatever the cursor is on. A free cell offers the tiles that can be placed
-    there; bare ground offers a new lane; a tile holds that tile's own settings; and a
-    Channel Start cell holds the lane's settings with the channel's whole sound underneath
-    them.</p>
-
-    <p>A tile is placed from the panel rather than from a palette, because the cursor is
-    already the answer to <em>where</em>. It goes on free ground only — a lane's empty
-    step, the cell under a stack, or the Lane End cell, which grows the lane by one
-    step.</p>
 
     <h3>Numbers are bars</h3>
 
@@ -249,13 +211,6 @@
       <tr><td>Shift + &uarr; / &darr;</td><td>Transpose a note by a semitone</td></tr>
       <tr><td>Shift + &#8984; + &uarr; / &darr;</td><td>By an octave</td></tr>
     </table>
-
-    <div class="note">
-      <p>The first launch opens on three pages — Play, the scores and the guide. They come
-      up again on every launch until <span class="ui">Don't show this again</span> is
-      ticked, which is the only thing on that panel that is remembered. Nothing is blocked
-      while they are up: the row behind them can still be pressed.</p>
-    </div>
   </section>
 
   <section class="panel">
@@ -489,16 +444,17 @@
   <section class="panel">
     <h2 id="sound">The Sound</h2>
 
-    <p>Every channel is a two operator FM voice — a carrier that sounds the note and a
-    modulator that colours it — with an amplitude envelope on the carrier, a decay on the
-    modulator, and a third envelope that moves the pitch itself. The app holds one patch
-    per channel, eight in all, and twenty-four voices are shared between them.</p>
+    <p>A note is sounded by a two operator FM voice: a carrier that carries the pitch and
+    a modulator that colours it. The modulator's frequency is set as a ratio of the note's
+    rather than as a frequency of its own, and how deep it reaches into the carrier is
+    most of how bright the note is. Three envelopes shape the rest — one on the carrier's
+    amplitude, one on the modulator's depth, and one that moves the pitch itself.</p>
 
-    <p>A channel's sound is reached by selecting its Channel Start cell: the whole of it
-    stands on the Tile panel under the lane's own rows. There is no separate instrument
-    editor, because there is nothing an instrument is here except the fifteen numbers
-    below — and those fifteen are exactly what a parameter lock can reach. There is nothing
-    about a channel a single step cannot take hold of.</p>
+    <p>A channel holds one patch of these settings, reached by selecting its Channel Start
+    cell: the whole of it stands on the Tile panel under the lane's own rows. There is no
+    separate instrument editor, because there is nothing an instrument is here except the
+    fifteen numbers below — and those fifteen are exactly what a parameter lock can reach.
+    There is nothing about a channel a single step cannot take hold of.</p>
 
     <figure>
       <img src="assets/screens/tile-sound.png" width="212" height="565" alt="The Tile panel with a Channel Start selected: the lane's own rows, and the channel's whole sound under them">
@@ -576,11 +532,69 @@
       </tr>
     </table>
 
-    <div class="note">
-      <p>A fresh patch is a plain sine with the FM switched off, both sends silent and the
-      pan centred: nothing is on until it is asked for. Double-clicking a parameter's name
-      is what takes it back to that.</p>
-    </div>
+    <p>Double-clicking a parameter's name takes that one row back to where a fresh patch
+    holds it.</p>
+
+    <h3>Polyphony</h3>
+
+    <p>The voices are not owned by the channels. They come from a single pool of
+    <strong>twenty-four</strong>, shared by all eight and held only for as long as a note
+    is sounding: a patch is what a voice is built from at the moment a note starts, not a
+    voice standing ready. So one channel can take the whole pool for a twenty-four note
+    chord if nothing else is playing, and eight channels sounding at once divide the same
+    twenty-four between them.</p>
+
+    <p>Unison is the one thing that looks as though it should cost two voices and does
+    not — the detuned pair is made inside the one voice, so it thickens a part without
+    halving what is left for the rest. Amp release is what does cost: a note holds its
+    voice until its tail has finished, not until its gate closes.</p>
+
+    <h3>When the voices run out</h3>
+
+    <p>An arriving note takes the quietest voice sounding, and of equally quiet ones the
+    nearest to its end. A note quieter than everything already playing is dropped rather
+    than taking a voice from it. Level is what decides both, so an accent is what survives
+    a dense passage.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="channels">The Channels Panel</h2>
+
+    <p>All eight channels at once, a row each, at the left edge. It is the one panel that
+    holds the whole bank rather than one thing, since a mute is only ever pressed against
+    what the rest of the mix is doing.</p>
+
+    <figure>
+      <div class="placeholder">Screenshot — the Channels panel, eight rows of a channel
+      number with Solo, Mute and Select on each</div>
+    </figure>
+
+    <table>
+      <tr>
+        <td><span class="ui">Solo</span></td>
+        <td>Hear this channel and nothing else. Several can be soloed at once, and while
+        anything is, the mutes are not consulted — they keep what they hold, so dropping
+        the last solo hands back the mix that was underneath it</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Mute</span></td>
+        <td>Silence this channel. Under a solo it dims and its presses are not acted
+        on</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Select</span></td>
+        <td>Puts the cursor on the Channel Start tile that names the channel, which is
+        where its sound is reached. A channel with no lane of its own dims — the one place
+        on screen that says which of the eight are in use</td>
+      </tr>
+    </table>
+
+    <p>A mute is silent but still running: the lane keeps its place in the bar and its
+    laps go on counting, so letting a channel back in is hearing it from wherever the
+    sequence has got to. That is what tells it from a lane's <span class="ui">Play</span>
+    switch — see <a href="#score">Inside a Score</a>.</p>
+
+    <p>Both sets are saved with the score.</p>
   </section>
 
   <section class="panel">
@@ -767,12 +781,6 @@
         <td>Desktop only. Shows the directory the scores are written to</td>
       </tr>
     </table>
-
-    <div class="note">
-      <p>On a phone or a tablet, leaving the app stops the sequence. Nothing about a run
-      survives being sent to the background, so the piece ends at the edge and Play starts
-      it again from the top.</p>
-    </div>
   </section>
 
   <section class="panel">
@@ -781,8 +789,7 @@
     <p>Every score is a plain text file in a single folder, and the chooser on the
     transport row is that folder read out rather than anything the app remembers. So every
     name on it is a file that is really there, and a file dropped into the folder simply
-    appears in the list. A copy of the app that has saved nothing yet writes nine scores
-    for itself — the sample, and eight bars with a note on each beat.</p>
+    appears in the list.</p>
 
     <h3>Reaching the folder</h3>
 
@@ -819,44 +826,6 @@
     there as temporary.</p>
   </section>
 
-  <section class="panel">
-    <h2 id="pro-tips">Pro Tips</h2>
-
-    <h3>Past the ends of a bar</h3>
-
-    <p>A bar's travel is where a parameter is dialled, not the whole of what it will take.
-    Double-click one, type a number, and it goes as far as the model allows — which is how
-    a part is moved further than two octaves, or a tail held longer than the bar reaches.
-    Past what the synth will accept it is held there, and the bar says which it was.</p>
-
-    <p>A score file has never been held to a bar either, so the same applies to a value
-    written into one by hand.</p>
-
-    <h3>Somewhere to keep what is not in use</h3>
-
-    <p>A Jump Target lane that nothing flies to can never sound, because nothing reaches
-    it. That is not an error and the app does not go looking for it — so a corner of the
-    plane makes a perfectly good scratch space. A part taken out of the piece can be left
-    there whole, and jumped back into later.</p>
-  </section>
-
-  <section class="panel">
-    <h2 id="your-own">Make It Your Own</h2>
-
-    <p>Jacquard was developed entirely with Unity and Claude Code, and everything needed
-    to understand and modify the project is included in
-    <a href="https://github.com/keijiro/Jacquard">its repository</a>.</p>
-
-    <p>That means you don't have to stop at the features provided here. You can add new
-    tile types, change the sequencing rules, extend the sound engine, redesign the
-    interface, or take the project in a completely different direction.</p>
-
-    <p>If you find something missing—or simply want something to work differently—don't
-    hesitate to change it.</p>
-
-    <p>Make Jacquard your own.</p>
-  </section>
-
 </main>
 
 <aside class="rail">
@@ -870,18 +839,18 @@
     <nav class="group contents" aria-label="Contents">
       <p class="label">Contents</p>
       <ol>
+        <li><a href="#intro">Introduction</a></li>
         <li><a href="#web">Try It on the Web</a></li>
         <li><a href="#concepts">Basic Concepts</a></li>
         <li><a href="#screen">The Screen</a></li>
         <li><a href="#score">Inside a Score</a></li>
         <li><a href="#sound">The Sound</a></li>
+        <li><a href="#channels">The Channels Panel</a></li>
         <li><a href="#send">Send FX</a></li>
         <li><a href="#live">Live FX</a></li>
         <li><a href="#global">Global Settings</a></li>
         <li><a href="#system">System Settings</a></li>
         <li><a href="#files">Scores and Files</a></li>
-        <li><a href="#pro-tips">Pro Tips</a></li>
-        <li><a href="#your-own">Make It Your Own</a></li>
       </ol>
     </nav>
 
