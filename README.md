@@ -9,7 +9,7 @@ repository is what is served.
 
 | | |
 | --- | --- |
-| `index.html` | The guide. Its text currently comes from the Jacquard README |
+| `index.html` | The guide. It covers the whole app, section by section |
 | `privacy.html` | The privacy policy, from `PRIVACY.md` in the Jacquard repository |
 | `assets/style.css` | The whole design, and where the reasoning behind it is written |
 | `assets/figures/` | The score figures, copied from `Docs/Figures/` in the Jacquard repository |
@@ -24,8 +24,22 @@ Both come from Google Fonts.
 Where the text comes from
 -------------------------
 
-Everything on the pages is the Jacquard repository's own prose rather than a paraphrase
-of it. When the source is changed, the change is carried over here by hand.
+The Jacquard repository's own documents, carried over by hand: `Docs/manual.md` for the
+gestures and the panels, `Docs/sequencer-spec.md` for what the tiles mean, and the
+`Docs/impl-*.md` notes for the synth, the mix, the effects and the files. Basic Concepts
+is still the README's own prose. Nothing here is invented — when the app changes, the
+change is carried over rather than restated.
+
+The pictures the guide asks for are not all taken yet. Each missing one stands as a
+dashed placeholder saying what the picture is of, so a file can be dropped in later
+without anything around it moving; `.placeholder` in the stylesheet is what draws them.
+They are of two kinds, and the two are taken different ways:
+
+- **Screenshots of the app** — the whole screen and the panels. Six of them, all pending
+- **Score figures** — a plane cropped to a score's own bounds, the way the twelve in
+  `assets/figures/` were taken. Five more are asked for in Inside a Score; the procedure,
+  and the `.jacquard` file each existing figure is a picture of, are in `Docs/Figures/`
+  in the Jacquard repository
 
 Publishing
 ----------

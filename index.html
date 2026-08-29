@@ -47,7 +47,14 @@
     <ol>
       <li><a href="#web">Try It on the Web</a></li>
       <li><a href="#concepts">Basic Concepts</a></li>
-      <li><a href="#tips">Useful Tips</a></li>
+      <li><a href="#screen">The Screen</a></li>
+      <li><a href="#score">Inside a Score</a></li>
+      <li><a href="#sound">The Sound</a></li>
+      <li><a href="#send">Send FX</a></li>
+      <li><a href="#live">Live FX</a></li>
+      <li><a href="#global">Global Settings</a></li>
+      <li><a href="#system">System Settings</a></li>
+      <li><a href="#files">Scores and Files</a></li>
       <li><a href="#pro-tips">Pro Tips</a></li>
       <li><a href="#your-own">Make It Your Own</a></li>
     </ol>
@@ -63,8 +70,9 @@
 
     <div class="note">
       <p>Note that the Web version keeps saved scores in the browser's storage, which the
-      browser may clear at any time. There is currently no way to back them up as external
-      files, so treat anything made there as temporary.</p>
+      browser may clear at any time, and there is no way to back them up as external files.
+      Treat anything made there as temporary — see
+      <a href="#files">Scores and Files</a>.</p>
     </div>
   </section>
 
@@ -135,28 +143,298 @@
   </section>
 
   <section class="panel">
-    <h2 id="tips">Useful Tips</h2>
+    <h2 id="screen">The Screen</h2>
 
-    <h3>Copying a stack</h3>
+    <p>The transport row runs across the top and the score plane fills everything under
+    it. Nothing else is on screen until it is asked for: the five switches on the row
+    raise the panels, and one panel — the Tile panel — comes up by itself and follows the
+    cursor.</p>
 
-    <p>Double-click a tile to copy its entire stack to the copy buffer. Double-click an
-    empty slot to paste the buffered stack there.</p>
+    <figure>
+      <div class="placeholder">Screenshot — the whole screen, with the transport row, the
+      score plane and the Tile panel named</div>
+    </figure>
 
-    <p>This makes it quick to duplicate chords, parameter locks, or more complex stacks
-    without rebuilding them tile by tile.</p>
+    <h3>The transport row</h3>
 
-    <h3>Switching scores while playing</h3>
+    <table>
+      <tr>
+        <td><span class="ui">Play</span></td>
+        <td>Starts and stops the sequence. The space bar does the same</td>
+      </tr>
+      <tr>
+        <td>bpm</td>
+        <td>The tempo, 20 to 300. The delay is kept in time with it</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Channels</span></td>
+        <td>Raises a row per channel, with a Mute and a Solo switch on each. A solo
+        overrules every mute, and both are saved with the score. Select on a row puts the
+        cursor on the Channel Start tile that names it</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Send FX</span></td>
+        <td>Raises the reverb and the delay</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Live FX</span></td>
+        <td>Raises the twelve performance buttons</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Global</span></td>
+        <td>Raises the scale and the limiter</td>
+      </tr>
+      <tr>
+        <td><span class="ui">System</span></td>
+        <td>Raises what is set about the app rather than about the piece</td>
+      </tr>
+      <tr>
+        <td>The score name</td>
+        <td>The score folder read out, stepped through with the arrows beside it, with
+        <span class="ui">Save</span> and <span class="ui">Load</span> after it</td>
+      </tr>
+      <tr>
+        <td><span class="ui">?</span></td>
+        <td>Opens this guide in a browser</td>
+      </tr>
+    </table>
 
-    <p>When a score is already playing, pressing a <span class="ui">Load</span> button
-    does not switch scores immediately. Instead, the change is queued until the master
-    lane reaches the end of its loop.</p>
+    <p>On a phone or a tablet the row holds more than the screen does, so it is dragged
+    sideways to reach the end of it. The <span class="ui">?</span> is the first thing past
+    the edge.</p>
 
-    <p>This allows one score to transition into another without interrupting the current
-    phrase.</p>
+    <h3>Where the panels stand</h3>
+
+    <table>
+      <tr>
+        <td>Tile</td>
+        <td>The right edge, outermost. Everything the cell under the cursor decides</td>
+      </tr>
+      <tr>
+        <td>Send FX</td>
+        <td>The right edge, inside the cursor's — the amount a channel sends is a row of
+        its sound, and this is what it is sent to</td>
+      </tr>
+      <tr>
+        <td>Channels</td>
+        <td>The left edge</td>
+      </tr>
+      <tr>
+        <td>Global, System</td>
+        <td>The middle, since neither is read against anything on the plane</td>
+      </tr>
+      <tr>
+        <td>Live FX</td>
+        <td>Across the bottom, where the hands already are</td>
+      </tr>
+    </table>
+
+    <p>A column of panels longer than the screen is dragged up and down, the same way the
+    transport row is dragged sideways.</p>
+
+    <h3>The Tile panel</h3>
+
+    <p>There is no window to open and nothing to keep in step with the score: the panel is
+    simply whatever the cursor is on. A free cell offers the tiles that can be placed
+    there; bare ground offers a new lane; a tile holds that tile's own settings; and a
+    Channel Start cell holds the lane's settings with the channel's whole sound underneath
+    them.</p>
+
+    <p>A tile is placed from the panel rather than from a palette, because the cursor is
+    already the answer to <em>where</em>. It goes on free ground only — a lane's empty
+    step, the cell under a stack, or the Lane End cell, which grows the lane by one
+    step.</p>
+
+    <h3>Numbers are bars</h3>
+
+    <p>Drag a bar right or up to change it, and hold shift for a fine movement.
+    Double-click it to type a number instead, which may go past the ends of the bar: the
+    bar is where the travel is spent, not the whole of what the parameter will take.</p>
+
+    <p>Double-click the <em>name</em> beside a bar and the row lets go — a lock drops that
+    parameter, and a channel's sound goes back to where a fresh patch holds it.</p>
+
+    <h3>Moving about</h3>
+
+    <p>Drag from an empty cell to pan the plane; a two-finger swipe or command-drag does
+    the same from anywhere. Dragging a tile carries the tile, and dragging a lane's head
+    cell carries the lane, so what a drag means is whatever is under it.</p>
+
+    <table>
+      <tr><td>Space</td><td>Play or stop</td></tr>
+      <tr><td>Arrow keys</td><td>Move the cursor</td></tr>
+      <tr><td>Return</td><td>Sound the note under the cursor</td></tr>
+      <tr><td>Delete</td><td>Remove the tile under the cursor</td></tr>
+      <tr><td>Shift + &uarr; / &darr;</td><td>Transpose a note by a semitone</td></tr>
+      <tr><td>Shift + &#8984; + &uarr; / &darr;</td><td>By an octave</td></tr>
+    </table>
+
+    <div class="note">
+      <p>The first launch opens on three pages — Play, the scores and the guide. They come
+      up again on every launch until <span class="ui">Don't show this again</span> is
+      ticked, which is the only thing on that panel that is remembered. Nothing is blocked
+      while they are up: the row behind them can still be pressed.</p>
+    </div>
   </section>
 
   <section class="panel">
-    <h2 id="pro-tips">Pro Tips</h2>
+    <h2 id="score">Inside a Score</h2>
+
+    <p>A score is one plane, and everything is written on it — every channel, every part,
+    every branch. These are the words the rest of this guide uses for what is on it.</p>
+
+    <table>
+      <tr>
+        <td>Channel</td>
+        <td>One of eight streams, each with a sound of its own</td>
+      </tr>
+      <tr>
+        <td>Lane</td>
+        <td>A row of steps. Time runs left to right along it</td>
+      </tr>
+      <tr>
+        <td>Step</td>
+        <td>One column of a lane</td>
+      </tr>
+      <tr>
+        <td>Stack</td>
+        <td>The run of tiles hanging down from a step. Everything in one stack happens at
+        the same instant, and there is no limit on how long it is</td>
+      </tr>
+      <tr>
+        <td>Tile</td>
+        <td>What is written on a cell, one per cell</td>
+      </tr>
+    </table>
+
+    <figure>
+      <div class="placeholder">Score figure — one lane with its parts named: the Channel
+      Start at the head, a step holding a stack of three tiles, an empty step showing its
+      &#9654; marker, and the Lane End closing the rail</div>
+    </figure>
+
+    <h3>The tiles</h3>
+
+    <table>
+      <tr>
+        <td>Note</td>
+        <td>The thing that sounds. A letter, an octave, and a length in steps</td>
+      </tr>
+      <tr>
+        <td>Absolute Lock</td>
+        <td>Sets sound parameters to a value for the step it sits on. One lock can hold
+        several at once</td>
+      </tr>
+      <tr>
+        <td>Relative Lock</td>
+        <td>The same, shifting them from wherever they are instead</td>
+      </tr>
+      <tr>
+        <td>Cycle Gate</td>
+        <td>Lets what is below it through only on the laps it names — a period from 2 to
+        32, with a switch per lap</td>
+      </tr>
+      <tr>
+        <td>Chance Gate</td>
+        <td>Lets it through at a percentage</td>
+      </tr>
+      <tr>
+        <td>Channel Start</td>
+        <td>The head of a lane</td>
+      </tr>
+      <tr>
+        <td>Lane End</td>
+        <td>The far end. Returns to the Channel Start the lap began at</td>
+      </tr>
+      <tr>
+        <td>Jump</td>
+        <td>Flies to another lane, from the step after it</td>
+      </tr>
+      <tr>
+        <td>Jump Target</td>
+        <td>The head of the lane it flies to. One Jump for one Jump Target</td>
+      </tr>
+    </table>
+
+    <figure>
+      <div class="placeholder">Score figure — one of each of the nine tiles on the plane,
+      so each icon can be recognised on sight</div>
+    </figure>
+
+    <p>A lane can be put anywhere on the plane. What kind it is is said by its head cell
+    and not by where it sits: a Channel Start makes it a lane of that channel, running
+    whenever the channel does, and a Jump Target makes it a branch destination, entered
+    only from a Jump. Whichever it is, its Lane End returns to the Channel Start the lap
+    began at — so however far a lap wanders it comes back to the same place.</p>
+
+    <h3>The Channel Start tile</h3>
+
+    <p>Selecting one puts the lane's own settings on the panel, with the channel's whole
+    sound under them.</p>
+
+    <table>
+      <tr>
+        <td><span class="ui">Play</span></td>
+        <td>Whether the lane runs at all</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Channel</span></td>
+        <td>1 to 8. It picks the sound as well as the stream, so lanes sharing a channel
+        share a timbre</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Step length</span></td>
+        <td>What note value one step is, from 1/1 down to 1/64. A sixteenth by default, and
+        it is per lane — so lanes of different speeds run over one tempo</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Lane steps</span></td>
+        <td>How long the lane is</td>
+      </tr>
+    </table>
+
+    <p>Double-clicking the Channel Start cell throws the <span class="ui">Play</span>
+    switch too, which is the quick way to bring a part in and out while the piece
+    runs.</p>
+
+    <p><strong>Turning Play off does not cut the lane where the hand fell.</strong> The lap
+    being played is played out, and after that no runner is sent again. Turning it back on
+    does not resume where it left off either: it waits for the turn of the piece and comes
+    in at the head of its lap, in step with everything else. A lane drawn while the
+    sequence is running waits for the same moment, since there is nothing else for it to
+    line up with.</p>
+
+    <p>That is a different thing from a channel's mute on the Channels panel. A mute is
+    <em>silent but still running</em>, so letting go of it means hearing the lane from
+    wherever the score has got to. Play off is <em>not running</em>, and there is no
+    position to come back to.</p>
+
+    <figure>
+      <div class="placeholder">Score figure — two lanes of the same channel, one with Play
+      on and one with it off, showing how the head cell draws the difference</div>
+    </figure>
+
+    <h3>The order things are applied in</h3>
+
+    <p>Everything happening at one instant is read as a single pass down the plane: within
+    a stack from top to bottom, and between lanes in the order their Channel Start tiles
+    stand from top to bottom. It is one rule and not two, and it is what makes gates and
+    locks read the same way everywhere.</p>
+
+    <p>A <strong>gate</strong> stops the descent. Everything below it in the stack is
+    skipped, and everything above it has already happened — which is why a gate placed
+    partway down a chord divides it.</p>
+
+    <p>A <strong>lock</strong> colours whatever is read after it: the notes below it in its
+    own stack, and the notes the lanes below it make while its step lasts. It lasts for
+    that step and nothing more — nothing accumulates across laps, so what a sound is at any
+    instant can be read off the plane.</p>
+
+    <figure>
+      <div class="placeholder">Score figure — one stack mixing the kinds: a note, then a
+      lock, then a gate, then two more notes, with only what hangs below each one
+      affected by it</div>
+    </figure>
 
     <h3>Several lanes in one channel</h3>
 
@@ -177,9 +455,9 @@
       <img src="assets/figures/10-accent.png" width="356" height="124" alt="A note lane combined with a shorter accent lane">
     </figure>
 
-    <p>When multiple lanes exist in the same channel, they are applied from top to bottom.
-    This ordering is important when using Parameter Locks: a lane that changes parameters
-    should generally be placed above the lane whose notes use those parameters.</p>
+    <p>Because lanes are applied from top to bottom, a lane that changes parameters should
+    generally be placed <em>above</em> the lane whose notes use those parameters. Below
+    them it colours nothing.</p>
 
     <figure>
       <img src="assets/figures/11-lock-lane.png" width="220" height="124" alt="Parameter Lock lane above a note lane">
@@ -187,12 +465,12 @@
 
     <h3>The master lane</h3>
 
-    <p>The first lane of Channel 1 has a special role: it is the <strong>master
-    lane</strong>.</p>
+    <p>The first lane of Channel 1 — the topmost one — has a special role: it is the
+    <strong>master lane</strong>.</p>
 
-    <p>Its loop defines the synchronization boundary for the entire score. Queued score
-    changes are applied when the master lane loops, and it also determines when newly
-    started lanes begin playback.</p>
+    <p>Its loop defines the synchronization boundary for the entire score, the
+    <strong>turn of the piece</strong>. Queued score changes are applied when the master
+    lane loops, and it also determines when newly started lanes begin playback.</p>
 
     <p>In other words, the master lane acts as the musical clock for larger structural
     changes, making it possible to switch patterns and introduce parts while keeping
@@ -202,17 +480,390 @@
       <img src="assets/figures/12-master.png" width="356" height="232" alt="Master lane controlling synchronized score switching and lane start timing">
     </figure>
 
-    <h3>Where the scores live</h3>
+    <p>Which lane it is is decided by position rather than by a mark on it, so moving lanes
+    about moves which one it is. It also cannot be silenced: its
+    <span class="ui">Play</span> switch can be thrown and it is kept in the file, but the
+    lane runs anyway — the lane that hands out the instant everything else starts on cannot
+    be the one that stops.</p>
 
-    <p>Every score is a plain text file in a single folder, and the folder can be reached
-    from outside the app. On desktop, the <span class="ui">Open score folder</span> button
-    on the System panel reveals it in the file manager. On iOS, the same folder appears in
-    the Files app under <strong>On My iPhone</strong> (or <strong>On My iPad</strong>), as
-    Jacquard's own folder.</p>
+    <h3>Branching</h3>
 
-    <p>From there scores can be copied, renamed, backed up, or moved between devices. A
-    file dropped into the folder simply appears in the score list, since the list is that
-    folder read out rather than anything the app remembers.</p>
+    <p>A Jump on its own is only a longer lane written in two pieces. What makes it worth
+    having is a gate above it: under a Cycle Gate the sequence takes the branch at a
+    regular interval, and under a Chance Gate it takes it at random.</p>
+
+    <p>Reaching a Jump does not end the stack — the tiles under it belong to the same
+    instant, and the flying happens from the next step. A Jump placed on the rail row
+    itself has nothing above it, so it can only ever be unconditional.</p>
+
+    <figure>
+      <div class="placeholder">Score figure — a Cycle Gate above a Jump, so the branch is
+      taken on one lap in four and the lane runs straight on for the other three</div>
+    </figure>
+
+    <h3>Editing</h3>
+
+    <p>Double-click a tile to copy its entire stack to the copy buffer. Double-click an
+    empty slot to paste the buffered stack there. This makes it quick to duplicate chords,
+    parameter locks, or more complex stacks without rebuilding them tile by tile.</p>
+
+    <p>Drag a tile to move it, and whatever hangs below it comes too; within its own step
+    that reorders the stack. Drag a lane's head cell to move the whole lane. A drop with
+    nowhere to go lights nothing and does not happen.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="sound">The Sound</h2>
+
+    <p>Every channel is a two operator FM voice — a carrier that sounds the note and a
+    modulator that colours it — with an amplitude envelope on the carrier, a decay on the
+    modulator, and a third envelope that moves the pitch itself. The app holds one patch
+    per channel, eight in all, and twenty-four voices are shared between them.</p>
+
+    <p>A channel's sound is reached by selecting its Channel Start cell: the whole of it
+    stands on the Tile panel under the lane's own rows. There is no separate instrument
+    editor, because there is nothing an instrument is here except the fifteen numbers
+    below — and those fifteen are exactly what a parameter lock can reach. There is nothing
+    about a channel a single step cannot take hold of.</p>
+
+    <figure>
+      <div class="placeholder">Screenshot — the Sound group on the Tile panel</div>
+    </figure>
+
+    <table>
+      <tr>
+        <td>Transpose</td>
+        <td>Semitones the channel's notes are moved by, two octaves either way on the bar.
+        It is spent as the note is made, so it is the one parameter the synth never
+        sees</td>
+      </tr>
+      <tr>
+        <td>Level</td>
+        <td>The channel's own level in decibels — silent at the bottom of the bar, and
+        6&nbsp;dB at the top</td>
+      </tr>
+      <tr>
+        <td>Pan</td>
+        <td>Where the note sits across the image. The two sends take it unpanned</td>
+      </tr>
+      <tr>
+        <td>Unison</td>
+        <td>Above zero every note sounds twice, detuned apart and spread across the image.
+        The image opens over the first three tenths of the bar and the rest goes on
+        detuning</td>
+      </tr>
+      <tr>
+        <td>Gate ratio</td>
+        <td>Multiplies the length written on the note</td>
+      </tr>
+      <tr>
+        <td>FM ratio</td>
+        <td>The modulator's frequency as a ratio of the note's</td>
+      </tr>
+      <tr>
+        <td>FM amount</td>
+        <td>How deep the modulation goes, which is most of how bright the tone is</td>
+      </tr>
+      <tr>
+        <td>Feedback</td>
+        <td>How much of itself the modulator hears. Pushed up it turns the tone to
+        noise</td>
+      </tr>
+      <tr>
+        <td>FM decay</td>
+        <td>How steeply that colour falls away: 0 is gone at once, 1 never leaves. A slope
+        rather than a time, so it means the same thing at any note length</td>
+      </tr>
+      <tr>
+        <td>Amp attack</td>
+        <td>How long the note takes to arrive</td>
+      </tr>
+      <tr>
+        <td>Amp release</td>
+        <td>How long its tail is once the gate closes. It is also how long the note holds
+        on to one of the twenty-four voices</td>
+      </tr>
+      <tr>
+        <td>Pitch sweep</td>
+        <td>How far the pitch falls into the note, in octaves; negative bends up into it
+        instead. A steep drop is most of what a kick drum is</td>
+      </tr>
+      <tr>
+        <td>Pitch decay</td>
+        <td>How long that takes. Short is a thump, long is a dive or a riser</td>
+      </tr>
+      <tr>
+        <td>Reverb send</td>
+        <td>How much of the note reaches the reverb</td>
+      </tr>
+      <tr>
+        <td>Delay send</td>
+        <td>How much of it reaches the delay</td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <p>A fresh patch is a plain sine with the FM switched off, both sends silent and the
+      pan centred: nothing is on until it is asked for. Double-clicking a parameter's name
+      is what takes it back to that.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 id="send">Send FX</h2>
+
+    <p>One reverb and one delay for the whole project, and every channel sends into them.
+    That split is the point of having effects on a sequencer like this one: what the effect
+    <em>does</em> belongs to the piece, and how much of a sound <em>goes into it</em>
+    belongs to the sound. So the two send amounts are in the patch with the rest of the
+    timbre — and a lock can reach them. An Absolute Lock partway down a chord can throw the
+    notes below it into the reverb and leave the ones above dry, which no amount of
+    per-channel effect settings could say.</p>
+
+    <figure>
+      <div class="placeholder">Screenshot — the Send FX panel</div>
+    </figure>
+
+    <table>
+      <tr>
+        <td>Reverb Size</td>
+        <td>The tail, from a small room to a long hall</td>
+      </tr>
+      <tr>
+        <td>Reverb Tone</td>
+        <td>How much of the tail's top survives each lap</td>
+      </tr>
+      <tr>
+        <td>Reverb Spread</td>
+        <td>How wide it sits, from a correlated pair to fully spread</td>
+      </tr>
+      <tr>
+        <td>Delay Time</td>
+        <td>A note value against the beat rather than a number of milliseconds, so it stays
+        in time when the tempo moves. Nine rungs from 1/32 to 1/4, triplets and dotted
+        values among them</td>
+      </tr>
+      <tr>
+        <td>Delay Feedback</td>
+        <td>How much of a repeat comes back</td>
+      </tr>
+      <tr>
+        <td>Delay Tone</td>
+        <td>How much of a repeat's top survives, so the repeats dull as they go</td>
+      </tr>
+      <tr>
+        <td>Delay Spread</td>
+        <td>Straight stereo through to full ping-pong</td>
+      </tr>
+    </table>
+
+    <p>Both effects are saved with the score.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="live">Live FX</h2>
+
+    <p>Twelve buttons along the bottom that act only while they are held, on whatever the
+    sequence is about to play. A note already sounding is never touched, and nothing here
+    is written to the score or saved with it — so none of it is held to the scale or the
+    transpose either.</p>
+
+    <figure>
+      <div class="placeholder">Screenshot — the Live FX panel</div>
+    </figure>
+
+    <table>
+      <tr>
+        <td>Reverb / Delay</td>
+        <td>Every note goes all the way into that effect</td>
+      </tr>
+      <tr>
+        <td>Stab / Sustain</td>
+        <td>Gate and release cut short, or both doubled</td>
+      </tr>
+      <tr>
+        <td>Oct - / Oct +</td>
+        <td>An octave down or up</td>
+      </tr>
+      <tr>
+        <td>Fall / Rise</td>
+        <td>A semitone a step away from where the button was pressed, back to nothing after
+        two bars</td>
+      </tr>
+      <tr>
+        <td>Roll 1/16 &hellip; 1/4</td>
+        <td>One, two, three or four steps of the sequence, caught from where the button was
+        pressed and played in place of what follows</td>
+      </tr>
+    </table>
+
+    <p>A roll of a sixteenth plays from the moment it is asked for; the longer ones let the
+    sequence through for the rest of their own length, recording it, before they stand in
+    for anything. A roll pressed where there is nothing to catch waits rather than holding
+    the silence, so a sixteenth landing a step wide of the note you meant still rolls a
+    note.</p>
+
+    <p><strong>Anything held at once applies at once</strong> — an octave up under a stab,
+    both sends, a rise through a reverb. The rolls are the exception, since all four stand
+    in for the same sequence: the one pressed last is the one that plays, and letting it go
+    hands back to whichever is still held. With a mouse only one button can be held at a
+    time; a touch screen holds one per finger.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="global">Global Settings</h2>
+
+    <p>What is set for the whole piece and answers to no cell. Both groups are saved with
+    the score.</p>
+
+    <figure>
+      <div class="placeholder">Screenshot — the Global panel, scale and limiter</div>
+    </figure>
+
+    <h3>Scale</h3>
+
+    <p>Twelve switches laid out as a keyboard, one per semitone, deciding which pitches the
+    piece is allowed to land on. A note the scale does not allow is <em>snapped</em> to the
+    nearest one it does rather than dropped — a note that does not sound is a hole in the
+    music.</p>
+
+    <p>It takes effect at the moment of sounding and does not rewrite anything: the tiles
+    keep the pitches they were written with, so a key can be tried and taken off again. A
+    channel's Transpose is applied first and the scale after it, so a part moved into
+    another register still lands in the key.</p>
+
+    <h3>Limiter</h3>
+
+    <table>
+      <tr>
+        <td>Threshold</td>
+        <td>Where limiting begins. This is the one that is played: the make-up gain follows
+        it, so the mix gets louder as it gets harder rather than quieter</td>
+      </tr>
+      <tr>
+        <td>Attack</td>
+        <td>How quickly it takes hold</td>
+      </tr>
+      <tr>
+        <td>Release</td>
+        <td>How quickly it lets go</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2 id="system">System Settings</h2>
+
+    <p>What is set about the app rather than about the piece. <strong>Nothing here is saved
+    with a score</strong>; it is remembered for the machine it was set on.</p>
+
+    <figure>
+      <div class="placeholder">Screenshot — the System panel</div>
+    </figure>
+
+    <table>
+      <tr>
+        <td><span class="ui">Volume</span></td>
+        <td>How loud the whole thing leaves. It sits after everything else in the mix, so
+        it makes the piece quieter without making it any softer — the limiter is doing the
+        same work at any setting. Off at the bottom of its travel</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Visualizer</span></td>
+        <td>The wash behind the score: the output as a trace across the middle, and the
+        twenty-four voice slots as a row along the bottom. Starts on</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Audition</span></td>
+        <td>Whether an edit sounds the note it just made — a bar let go of, a note written,
+        a stack pasted, a transpose from the keys. Starts on. Turned off, all of that goes
+        quiet, but Return still sounds the note under the cursor, since that is a note
+        asked for rather than one volunteered</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Buffer size</span></td>
+        <td>Reach for this if the sound bangs or drops out: how long a buffer the audio
+        thread has to fill, from 256 frames — about five milliseconds, which is what the
+        app ships with — up to 1024. A longer buffer survives a busy moment and costs that
+        much delay between a Live FX button and what comes out. It is taken up at the next
+        launch, which the panel says while the two disagree</td>
+      </tr>
+      <tr>
+        <td><span class="ui">Open score folder</span></td>
+        <td>Desktop only. Shows the directory the scores are written to</td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <p>On a phone or a tablet, leaving the app stops the sequence. Nothing about a run
+      survives being sent to the background, so the piece ends at the edge and Play starts
+      it again from the top.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 id="files">Scores and Files</h2>
+
+    <p>Every score is a plain text file in a single folder, and the chooser on the
+    transport row is that folder read out rather than anything the app remembers. So every
+    name on it is a file that is really there, and a file dropped into the folder simply
+    appears in the list. A copy of the app that has saved nothing yet writes nine scores
+    for itself — the sample, and eight bars with a note on each beat.</p>
+
+    <h3>Reaching the folder</h3>
+
+    <p>On desktop, the <span class="ui">Open score folder</span> button on the System panel
+    reveals it in the file manager. On iOS, the same folder appears in the Files app under
+    <strong>On My iPhone</strong> (or <strong>On My iPad</strong>), as Jacquard's own
+    folder.</p>
+
+    <p>From there scores can be copied, renamed, backed up, or moved between devices. The
+    app reads the folder again whenever it comes back to the front, since away is exactly
+    where a file manager does its work.</p>
+
+    <h3>Switching scores while playing</h3>
+
+    <p>When a score is already playing, pressing <span class="ui">Load</span> does not
+    switch scores immediately. Instead, the change is queued until the master lane reaches
+    the end of its loop, and from exactly that instant the new score runs. The two carry on
+    as though they had been written that way — no gap and no overlap, and whatever was
+    sounding across the seam is left to decay rather than being cut.</p>
+
+    <p>While it waits, the plane and the panels that edit the score are dimmed, since what
+    the switch is waiting on is a point measured on the lanes that are running. The mix and
+    the performance controls stay alive: timbre, sends, the limiter, the tempo, the mutes
+    and Live FX all go on working, which is the whole purpose of the feature.</p>
+
+    <p>The request cannot be taken back. <span class="ui">Stop</span> is what ends the
+    wait, and the load then takes effect there and then.</p>
+
+    <h3>The Web version</h3>
+
+    <p>The Web build keeps its scores in the browser's own storage. A save survives a
+    reload but not the site's data being cleared, there is no folder to open — so that
+    button is not there — and nothing can be copied out as a file. Treat anything made
+    there as temporary.</p>
+  </section>
+
+  <section class="panel">
+    <h2 id="pro-tips">Pro Tips</h2>
+
+    <h3>Past the ends of a bar</h3>
+
+    <p>A bar's travel is where a parameter is dialled, not the whole of what it will take.
+    Double-click one, type a number, and it goes as far as the model allows — which is how
+    a part is moved further than two octaves, or a tail held longer than the bar reaches.
+    Past what the synth will accept it is held there, and the bar says which it was.</p>
+
+    <p>A score file has never been held to a bar either, so the same applies to a value
+    written into one by hand.</p>
+
+    <h3>Somewhere to keep what is not in use</h3>
+
+    <p>A Jump Target lane that nothing flies to can never sound, because nothing reaches
+    it. That is not an error and the app does not go looking for it — so a corner of the
+    plane makes a perfectly good scratch space. A part taken out of the piece can be left
+    there whole, and jumped back into later.</p>
   </section>
 
   <section class="panel">
