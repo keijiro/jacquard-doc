@@ -101,6 +101,11 @@ body {
   width: 15rem;
 }
 
+/* The panel holds the contents as well now, so it is the one thing on the page that can
+ * be taller than the window it is pinned in. It is given the window's height less the
+ * air above and below it, and scrolls inside itself when the list runs past that —
+ * a stuck panel whose foot is off the bottom of the screen is a panel with entries
+ * nobody can reach. */
 .rail-panel {
   background: rgba(30, 30, 30, 0.88);
   backdrop-filter: blur(14px);
@@ -108,6 +113,9 @@ body {
   border: var(--line);
   border-radius: var(--radius);
   padding: 1.1rem 1.2rem;
+  max-height: calc(100vh - 2 * clamp(1.5rem, 4vw, 3rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .rail .label {
@@ -154,6 +162,44 @@ body {
 /* A link that leaves the guide says so, quietly. */
 .rail a .out { color: var(--label); float: right; }
 .rail a:hover .out { color: var(--ink); }
+
+/* The contents
+ *
+ * The list of sections stands in the rail with the rest of the guide's own navigation,
+ * because it is the same kind of thing as the links beside it: something reached for
+ * while reading, not something read. Each entry is a rail link like any other and takes
+ * the same ground under the hand.
+ *
+ * The number and the name are two columns rather than a number with a space after it,
+ * so every name begins at one edge whatever its number is, and a name too long for the
+ * rail wraps under itself instead of back under the number. The column is fixed at the
+ * width of the widest number the list can reach, which is what makes the edge hold. */
+
+.rail .contents ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: section;
+}
+
+.rail .contents li { counter-increment: section; }
+
+.rail .contents a {
+  display: grid;
+  grid-template-columns: 1.9em 1fr;
+  align-items: baseline;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+  line-height: 1.5;
+}
+
+.rail .contents a::before {
+  content: counter(section, decimal-leading-zero);
+  color: var(--label);
+  font-variant-numeric: tabular-nums;
+}
+
+.rail .contents a:hover::before { color: var(--ink); }
 
 /* The document */
 
@@ -217,51 +263,22 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* Contents, which is the app's panel header: a label at the top of a box, and a rule
+/* A section heading is the app's panel header: a label at the top of a box, and a rule
  * under it that is the only line in the panel.
  *
  * Nothing here is set bold. The face is monoline and light by design, and its heavy cut
  * shuts the counters at the sizes headings are set at — so what says this is a heading
  * is its size, the space it is given and the rule under it, not its weight. */
-.contents .label,
 .panel > h2 {
   font-family: var(--face-ui);
+  font-size: 1.35rem;
   letter-spacing: 0.05em;
+  line-height: 1.3;
   margin: 0 0 1rem;
   padding-bottom: 0.6rem;
   border-bottom: var(--line);
+  scroll-margin-top: 1.5rem;
 }
-
-.panel > h2 { font-size: 1.35rem; line-height: 1.3; scroll-margin-top: 1.5rem; }
-.contents .label { font-size: 0.85rem; color: var(--label); text-transform: uppercase; }
-
-.contents ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  counter-reset: section;
-}
-
-.contents li { counter-increment: section; }
-
-.contents a {
-  font-family: var(--face-ui);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.contents li::before {
-  content: counter(section, decimal-leading-zero);
-  font-family: var(--face-ui);
-  color: var(--label);
-  margin-right: 0.7rem;
-}
-
-.contents a:hover { border-bottom-color: var(--link); }
 
 .panel h3 {
   font-family: var(--face-ui);
@@ -416,6 +433,8 @@ figcaption {
   }
 
   .rail-panel {
+    max-height: none;
+    overflow: visible;
     flex: 1;
     display: flex;
     align-items: center;
@@ -429,6 +448,26 @@ figcaption {
   .rail .group + .group { margin: 0; padding: 0; border: 0; }
   .rail a { margin: 0; }
   .rail a .out { display: none; }
+
+  /* Twelve sections do not go in a row of links, so the contents drops out of the row
+   * and takes the whole width under it, in as many columns as the width will hold. Its
+   * label comes back, since down here it is the only thing saying what the list is. */
+  .rail .group.contents {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+  }
+
+  .rail .group.contents .label { display: block; margin-bottom: 0.25rem; }
+
+  .rail .contents ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    column-gap: 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
