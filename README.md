@@ -13,6 +13,7 @@ repository is what is served.
 | `privacy.html` | The privacy policy, from `PRIVACY.md` in the Jacquard repository |
 | `assets/style.css` | The whole design, and where the reasoning behind it is written |
 | `assets/figures/` | The score figures, copied from `Docs/Figures/` in the Jacquard repository |
+| `assets/screens/` | The screenshots of the app, taken the way the note below says |
 | `.nojekyll` | Serve the files as they are rather than running them through Jekyll |
 
 The look is the app's own: the palette is the grey ramp in `Assets/Jacquard/UI/Style.cs`,
@@ -30,16 +31,33 @@ gestures and the panels, `Docs/sequencer-spec.md` for what the tiles mean, and t
 is still the README's own prose. Nothing here is invented — when the app changes, the
 change is carried over rather than restated.
 
-The pictures the guide asks for are not all taken yet. Each missing one stands as a
-dashed placeholder saying what the picture is of, so a file can be dropped in later
-without anything around it moving; `.placeholder` in the stylesheet is what draws them.
-They are of two kinds, and the two are taken different ways:
+Where the pictures come from
+----------------------------
 
-- **Screenshots of the app** — the whole screen and the panels. Six of them, all pending
-- **Score figures** — a plane cropped to a score's own bounds, the way the twelve in
-  `assets/figures/` were taken. Five more are asked for in Inside a Score; the procedure,
-  and the `.jacquard` file each existing figure is a picture of, are in `Docs/Figures/`
-  in the Jacquard repository
+Both kinds are taken in the editor, in play mode, at a panel scale of 2 — so a UI pixel
+is two device pixels, and each one is asked for at half its pixel width. That is what
+keeps the interface on this page drawn at the size the interface is drawn at, and sharp
+on a display that has the pixels for it.
+
+- **Score figures** (`assets/figures/`) — the plane cropped to a score's own bounds plus
+  a margin of ten units, which is what leaves the lattice dots room around the tiles.
+  Each is a picture of one `.jacquard` file written for it and nothing else; those files
+  and the procedure are in `Docs/Figures/` in the Jacquard repository. `01` to `12` are
+  the ones the Jacquard README illustrates the tile rules with; `13` to `17` are this
+  guide's own
+- **Screenshots** (`assets/screens/`) — the whole screen, and each panel cropped to its
+  own bounds plus the same margin of ten, since what tells a panel from the plane is the
+  air around it. The visualizer is off for the panel crops: silent it draws one flat
+  line across the middle of the screen, and a line through the margin of a crop reads as
+  an artefact rather than as the app. It is on for the whole screen, where it *is* the
+  app
+
+Three of them carry labels — the whole screen, the parts of a lane, and the nine tiles —
+because the paragraph beside each of those names what it points at. The labels are not
+drawn on afterwards: they go on the screen as one more layer of the app's own interface,
+set in Jura at the caption size in the caption grey, with leaders in axis-aligned
+segments the way the plane draws a jump link, and are captured with everything else. So
+the ink in a label is the ink the app would have used.
 
 Publishing
 ----------
