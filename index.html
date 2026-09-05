@@ -770,10 +770,11 @@
       <tr>
         <td><span class="ui">Buffer size</span></td>
         <td>Reach for this if the sound bangs or drops out: how long a buffer the audio
-        thread has to fill, from 256 frames — about five milliseconds, which is what the
-        app ships with — up to 1024. A longer buffer survives a busy moment and costs that
-        much delay between a Live FX button and what comes out. It is taken up at the next
-        launch, which the panel says while the two disagree</td>
+        thread has to fill, from 256 frames up to 1024. A longer buffer survives a busy
+        moment and costs that much delay between a Live FX button and what comes out. It
+        is taken up at the next launch, which the panel says while the two disagree. On
+        iOS, set it to 1024 before recording the screen — a shorter buffer can leave the
+        recording's audio track broken</td>
       </tr>
       <tr>
         <td><span class="ui">Stage Mode</span></td>
