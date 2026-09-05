@@ -233,6 +233,15 @@ h1 {
   margin: 0 0 1.5rem;
 }
 
+/* Which app the guide is a guide to. It belongs with the title but is not part of the
+ * title's sentence, so it is set down the ramp and a size smaller — read when looked
+ * for, passed over otherwise. */
+h1 .version {
+  color: var(--label);
+  font-size: 0.85em;
+  letter-spacing: 0.03em;
+}
+
 /* The screenshot runs the width of the column, like everything else. */
 .shot {
   margin: 0;
