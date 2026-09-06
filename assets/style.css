@@ -346,24 +346,6 @@ figcaption {
 
 .note p { margin: 0; }
 
-/* The web build's address, which is the one link on the page anybody is looking for. */
-.address {
-  display: block;
-  font-family: var(--face-ui);
-  font-size: 1.05rem;
-  letter-spacing: 0.01em;
-  padding: 0.9rem 1.1rem;
-  margin: 1.5rem 0;
-  background: var(--background);
-  border: var(--line);
-  border-radius: var(--radius);
-  text-decoration: none;
-  word-break: break-all;
-  transition: background-color 0.12s ease;
-}
-
-.address:hover { background: var(--control); }
-
 /* Keys and buttons named in the text, set in the interface's own face so that a control
  * named on this page looks like the control it names. */
 .ui {
