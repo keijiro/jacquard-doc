@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jacquard — User Guide v1.1.0</title>
+<title>Jacquard — User Guide v1.2.0</title>
 <meta name="description" content="Jacquard is an experimental tile-based music sequencer built with Unity. Sequences are built by placing and stacking tiles on a two-dimensional grid.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.png" sizes="16x16">
@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<meta property="og:title" content="Jacquard — User Guide v1.1.0">
+<meta property="og:title" content="Jacquard — User Guide v1.2.0">
 <meta property="og:description" content="An experimental tile-based music sequencer built with Unity.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/screenshot.png">
@@ -25,7 +25,7 @@
 <main>
 
   <section class="hero">
-    <h1>Jacquard — User Guide <span class="version">v1.1.0</span></h1>
+    <h1>Jacquard — User Guide <span class="version">v1.2.0</span></h1>
 
     <figure class="shot">
       <img src="assets/screenshot.png" alt="The Jacquard interface: a score of tiles on a grid, with a panel of sound parameters at the right" width="2216" height="1412">
@@ -778,6 +778,15 @@
         <td><span class="ui">Open score folder</span></td>
         <td>Desktop only. Shows the directory the scores are written to</td>
       </tr>
+      <tr>
+        <td><span class="ui">Export</span> / <span class="ui">Import</span></td>
+        <td>Android and the browser only, the two places where the score folder cannot be
+        reached from outside the app at all. <span class="ui">Export</span> writes what is
+        on the plane to a file wherever the picker is pointed — in a browser, that is a
+        download; <span class="ui">Import</span> reads one back over the top of what is on
+        the plane, as an unsaved score, so the score folder is untouched and
+        <span class="ui">Load</span> still brings back what was there</td>
+      </tr>
     </table>
   </section>
 
@@ -800,6 +809,9 @@
     app reads the folder again whenever it comes back to the front, since away is exactly
     where a file manager does its work.</p>
 
+    <p>On Android and in a browser the folder cannot be reached at all, and
+    <a href="#transfer">Export and Import</a> stand in for it.</p>
+
     <h3>Switching scores while playing</h3>
 
     <p>When a score is already playing, pressing <span class="ui">Load</span> does not
@@ -816,12 +828,32 @@
     <p>The request cannot be taken back. <span class="ui">Stop</span> is what ends the
     wait, and the load then takes effect there and then.</p>
 
-    <h3>The Web version</h3>
+    <h3 id="transfer">Where there is no folder</h3>
 
-    <p>The Web build keeps its scores in the browser's own storage. A save survives a
-    reload but not the site's data being cleared, there is no folder to open — so that
-    button is not there — and nothing can be copied out as a file. Treat anything made
-    there as temporary.</p>
+    <p>On Android and in a browser there is nothing to hand over. Android hides an app's
+    own directory from every file manager on the phone, and in a browser the folder is a
+    database the page keeps rather than a place on the machine — so on both, the
+    <span class="ui">Open score folder</span> button is not there.</p>
+
+    <p>What stands in for it is the <span class="ui">Export</span> and
+    <span class="ui">Import</span> pair at the foot of the System panel: one score out to
+    wherever the picker is pointed, one score back in over the top of what is on the plane.
+    An imported score is an unsaved score, so the score folder and the chooser are
+    untouched and <span class="ui">Load</span> takes the file back.</p>
+
+    <p>Whether the press costs the sequence depends on the picker. On Android, and in a
+    browser on a phone, it takes the whole screen, and leaving the app stops the sequence.
+    A desktop browser's file dialog does not, so the app plays on behind it and a score
+    imported while the sequence is running waits for the turn of the piece, exactly as a
+    load does.</p>
+
+    <p>In Safari, the first download from a site waits for permission, in a prompt the app
+    cannot see: <span class="ui">Export</span> says the score went out, and the file
+    arrives once the prompt is answered.</p>
+
+    <p>The Web build also keeps its scores in the browser's own storage: a save survives a
+    reload but not the site's data being cleared. So anything made there and worth keeping
+    is worth exporting.</p>
   </section>
 
 </main>
@@ -855,6 +887,7 @@
       <p class="label">The App</p>
       <a href="https://github.com/keijiro/Jacquard/releases">Download for desktop <span class="out" aria-hidden="true">&#8599;</span></a>
       <a href="https://apps.apple.com/app/id6804390464">App Store (iOS) <span class="out" aria-hidden="true">&#8599;</span></a>
+      <a href="https://play.google.com/store/apps/details?id=jp.radiumsoftware.jacquard">Google Play (Android) <span class="out" aria-hidden="true">&#8599;</span></a>
       <a href="https://www.keijiro.tokyo/jacquard-web/">Try it in a browser <span class="out" aria-hidden="true">&#8599;</span></a>
       <a href="https://github.com/keijiro/Jacquard">GitHub <span class="out" aria-hidden="true">&#8599;</span></a>
     </div>
