@@ -55,14 +55,31 @@ on a display that has the pixels for it.
   and the procedure are in `Docs/Figures/` in the Jacquard repository. `01` to `12` are
   the ones the Jacquard README illustrates the tile rules with; `13` to `17` are this
   guide's own
-- **Screenshots** (`assets/screens/`) — the whole screen, and each panel cropped to its
-  own bounds plus the same margin of ten, since what tells a panel from the plane is the
-  air around it. The visualizer is off for the panel crops: silent it draws one flat
-  line across the middle of the screen, and a line through the margin of a crop reads as
-  an artefact rather than as the app. It is on for the whole screen, where it *is* the
-  app. The whole screen is taken at 880 by 640 units, which is very nearly the narrowest
-  the transport row fits across — a screen wider than that is a picture of the app shown
-  smaller than the app, and this page has 832 pixels to put it in
+- **Screenshots** (`assets/screens/` and `assets/screenshot.png`) — the whole screen, and
+  each panel cropped to its own bounds plus the same margin of ten, since what tells a
+  panel from the plane is the air around it. The visualizer is off for the panel crops:
+  silent it draws one flat line across the middle of the screen, and a line through the
+  margin of a crop reads as an artefact rather than as the app. It is on for the whole
+  screen, where it *is* the app. The whole screen is taken at 880 by 640 units, which is
+  very nearly the narrowest the transport row fits across — a screen wider than that is a
+  picture of the app shown smaller than the app, and this page has 832 pixels to put it
+  in; the picture at the head of the page is the same shutter at 1108 by 706, with the
+  transport running and nothing named on it
+
+The five screenshots come off one shutter rather than out of a hand, which is where they
+differ from the figures above. A figure is retaken when the tiles it illustrates change,
+which is rarely; a release moves rows inside three panels at once, and what has to be
+true of all five together — the same scale, the same margin, the same ground, the
+visualizer in the same state — is what a hand is worst at keeping. `Jacquard > Capture
+Guide Pictures` in the editor writes all five; `Assets/Editor/GuideCapture.cs` in the
+Jacquard repository is what it does and why.
+
+The one thing the shutter cannot decide for itself is the app's own settings, which are
+remembered for the machine it is run on and read at launch. Three of these pictures are
+pictures of them, and this page says of three of those settings that the app starts on,
+starts on and starts off — so the capture refuses to run while any of them is somewhere
+else, and names which. Set them on the System panel, leave play mode and enter it again
+so the app reads them, and run it.
 
 Three of them carry labels — the whole screen, the parts of a lane, and the nine tiles —
 because the paragraph beside each of those names what it points at. The labels are not
