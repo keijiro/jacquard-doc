@@ -242,6 +242,17 @@ h1 .version {
   letter-spacing: 0.03em;
 }
 
+/* And which build of it, since a version number names a release and the guide is
+ * written against a commit. It is a step further down the ramp again and set a size
+ * smaller than the version it follows: a reader checking whether the panel in front of
+ * them is the panel on the page reads the version, and only somebody holding the
+ * repository open has any use for the hash. */
+h1 .commit {
+  color: var(--dot);
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+}
+
 /* The screenshot runs the width of the column, like everything else. */
 .shot {
   margin: 0;
@@ -407,6 +418,23 @@ figcaption {
   white-space: nowrap;
 }
 
+/* A heading inside a table, where the app puts one inside a column of rows: the sound's
+ * fifteen parameters run under six of them, and a row read out of that list means what
+ * the heading over it says it means. It is the app's own heading carried in — a caption
+ * across the whole width with the rule already under it, since every row here has one —
+ * and the air above it is the gap the panel parts its groups with. */
+.panel table tr.group td {
+  font-family: var(--face-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--label);
+  padding-top: 1.6rem;
+  padding-bottom: 0.4rem;
+  white-space: nowrap;
+}
+
+.panel table tr.group:first-child td { padding-top: 0; }
+
 /* Narrow enough that a column beside the text is a column of nothing: the rail goes
  * back to being a row above it, which is where it came from. */
 @media (max-width: 820px) {
@@ -479,4 +507,10 @@ figcaption {
 
   .panel table td { padding: 0; border: 0; white-space: normal; }
   .panel table td:first-child { color: var(--label); }
+
+  /* A group's heading keeps its air, and the row is where it goes now that a cell has
+   * no padding of its own. */
+  .panel table tr.group { padding-top: 1.8rem; }
+  .panel table tr.group:first-child { padding-top: 0.7rem; }
+  .panel table tr.group td { padding-top: 0; padding-bottom: 0; }
 }

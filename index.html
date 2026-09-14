@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jacquard — User Guide v1.2.0</title>
+<title>Jacquard — User Guide v1.3.0 (8fe525d)</title>
 <meta name="description" content="Jacquard is an experimental tile-based music sequencer built with Unity. Sequences are built by placing and stacking tiles on a two-dimensional grid.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.png" sizes="16x16">
@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<meta property="og:title" content="Jacquard — User Guide v1.2.0">
+<meta property="og:title" content="Jacquard — User Guide v1.3.0 (8fe525d)">
 <meta property="og:description" content="An experimental tile-based music sequencer built with Unity.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/screenshot.png">
@@ -25,7 +25,8 @@
 <main>
 
   <section class="hero">
-    <h1>Jacquard — User Guide <span class="version">v1.2.0</span></h1>
+    <h1>Jacquard — User Guide <span class="version">v1.3.0
+    <span class="commit">8fe525d</span></span></h1>
 
     <figure class="shot">
       <img src="assets/screenshot.png" alt="The Jacquard interface: a score of tiles on a grid, with a panel of sound parameters at the right" width="2216" height="1412">
@@ -199,9 +200,10 @@
       <tr><td>Arrow keys</td><td>Move the cursor</td></tr>
       <tr><td>Return</td><td>Sound the note under the cursor</td></tr>
       <tr><td>Delete</td><td>Remove the tile under the cursor</td></tr>
-      <tr><td>Shift + &uarr; / &darr;</td><td>Transpose a note by a semitone</td></tr>
-      <tr><td>Shift + &#8984; + &uarr; / &darr;</td><td>By an octave</td></tr>
     </table>
+
+    <p>A pitch is not among them. It is set on the Tile panel, where the twelve keys are
+    asked for the note itself and light the one they land on.</p>
   </section>
 
   <section class="panel">
@@ -444,20 +446,35 @@
     <p>A channel holds one patch of these settings, reached by selecting its Channel Start
     cell: the whole of it stands on the Tile panel under the lane's own rows. There is no
     separate instrument editor, because there is nothing an instrument is here except the
-    fifteen numbers below — and those fifteen are exactly what a parameter lock can reach.
-    There is nothing about a channel a single step cannot take hold of.</p>
+    fifteen numbers below — and those fifteen are exactly what a parameter lock can
+    reach, in the same order and under the same headings, so a lock can be read against
+    the timbre it colours. There is nothing about a channel a single step cannot take
+    hold of.</p>
 
     <figure>
       <img src="assets/screens/tile-sound.png" width="212" height="565" alt="The Tile panel with a Channel Start selected: the lane's own rows, and the channel's whole sound under them">
     </figure>
 
+    <p>The fifteen stand in six groups, and a row is read under the heading over it: the
+    four under <span class="ui">FM</span> are the FM settings and say nothing else in
+    their names, and <span class="ui">Decay</span> under the amp envelope and
+    <span class="ui">Decay</span> under the pitch envelope are two different numbers told
+    apart by which stretch of the column they are in.</p>
+
     <table>
+      <tr class="group"><td colspan="2">Note</td></tr>
       <tr>
         <td>Transpose</td>
         <td>Semitones the channel's notes are moved by, two octaves either way on the bar.
         It is spent as the note is made, so it is the one parameter the synth never
         sees</td>
       </tr>
+      <tr>
+        <td>Gate ratio</td>
+        <td>Multiplies the length written on the note. The note counts the steps and this
+        takes a percentage of what it counted</td>
+      </tr>
+      <tr class="group"><td colspan="2">Mix</td></tr>
       <tr>
         <td>Level</td>
         <td>The channel's own level in decibels — silent at the bottom of the bar, and
@@ -473,16 +490,13 @@
         The image opens over the first three tenths of the bar and the rest goes on
         detuning</td>
       </tr>
+      <tr class="group"><td colspan="2">FM</td></tr>
       <tr>
-        <td>Gate ratio</td>
-        <td>Multiplies the length written on the note</td>
-      </tr>
-      <tr>
-        <td>FM ratio</td>
+        <td>Ratio</td>
         <td>The modulator's frequency as a ratio of the note's</td>
       </tr>
       <tr>
-        <td>FM amount</td>
+        <td>Amount</td>
         <td>How deep the modulation goes, which is most of how bright the tone is</td>
       </tr>
       <tr>
@@ -491,34 +505,37 @@
         noise</td>
       </tr>
       <tr>
-        <td>FM decay</td>
+        <td>Decay</td>
         <td>How steeply that colour falls away: 0 is gone at once, 1 never leaves. A slope
         rather than a time, so it means the same thing at any note length</td>
       </tr>
+      <tr class="group"><td colspan="2">Amp envelope</td></tr>
       <tr>
-        <td>Amp attack</td>
+        <td>Attack</td>
         <td>How long the note takes to arrive</td>
       </tr>
       <tr>
-        <td>Amp release</td>
+        <td>Release</td>
         <td>How long its tail is once the gate closes. It is also how long the note holds
         on to one of the twenty-four voices</td>
       </tr>
+      <tr class="group"><td colspan="2">Pitch envelope</td></tr>
       <tr>
-        <td>Pitch sweep</td>
+        <td>Depth</td>
         <td>How far the pitch falls into the note, in octaves; negative bends up into it
         instead. A steep drop is most of what a kick drum is</td>
       </tr>
       <tr>
-        <td>Pitch decay</td>
+        <td>Decay</td>
         <td>How long that takes. Short is a thump, long is a dive or a riser</td>
       </tr>
+      <tr class="group"><td colspan="2">Sends</td></tr>
       <tr>
-        <td>Reverb send</td>
+        <td>Reverb</td>
         <td>How much of the note reaches the reverb</td>
       </tr>
       <tr>
-        <td>Delay send</td>
+        <td>Delay</td>
         <td>How much of it reaches the delay</td>
       </tr>
     </table>
@@ -537,8 +554,8 @@
 
     <p>Unison is the one thing that looks as though it should cost two voices and does
     not — the detuned pair is made inside the one voice, so it thickens a part without
-    halving what is left for the rest. Amp release is what does cost: a note holds its
-    voice until its tail has finished, not until its gate closes.</p>
+    halving what is left for the rest. The amp envelope's release is what does cost: a note
+    holds its voice until its tail has finished, not until its gate closes.</p>
 
     <h3>When the voices run out</h3>
 
@@ -585,6 +602,13 @@
     switch — see <a href="#score">Inside a Score</a>.</p>
 
     <p>Both sets are saved with the score.</p>
+
+    <h3>Swapping two channels</h3>
+
+    <p>Under the eight rows is a <span class="ui">Swap</span> group: two channel numbers
+    to pick and a button to exchange them with. The sound, the mute and every lane naming
+    either number change places, so what moves is the numbering and the piece goes on
+    sounding as it did.</p>
   </section>
 
   <section class="panel">
@@ -748,15 +772,17 @@
       </tr>
       <tr>
         <td><span class="ui">Visualizer</span></td>
-        <td>The wash behind the score: the output as a trace across the middle, and the
-        twenty-four voice slots as a row along the bottom. Starts on</td>
+        <td>The wash behind the score: the output as a trace across the middle, and,
+        while a lane is selected, that channel's own share of it drawn brighter over the
+        top. Selecting any lane of a channel draws the whole channel, since what is
+        traced is the channel and not the lane. Starts on</td>
       </tr>
       <tr>
         <td><span class="ui">Audition</span></td>
         <td>Whether an edit sounds the note it just made — a bar let go of, a note written,
-        a stack pasted, a transpose from the keys. Starts on. Turned off, all of that goes
-        quiet, but Return still sounds the note under the cursor, since that is a note
-        asked for rather than one volunteered</td>
+        a stack pasted, a letter pressed on a note's keyboard. Starts on. Turned off, all
+        of that goes quiet, but Return still sounds the note under the cursor, since that
+        is a note asked for rather than one volunteered</td>
       </tr>
       <tr>
         <td><span class="ui">Buffer size</span></td>
@@ -771,8 +797,11 @@
         <td><span class="ui">Stage Mode</span></td>
         <td>For playing the app to a room rather than working in it. Starts off. On,
         <span class="ui">Save</span> leaves the transport row and the
-        <span class="ui">?</span> goes with it, and a double-click on a bar no longer opens
-        a field to type in</td>
+        <span class="ui">?</span> goes with it, the
+        <a href="#channels"><span class="ui">Swap</span> group</a> leaves the Channels
+        panel, and a double-click on a bar no longer opens a field to type in. Nothing the
+        piece is played with is touched, and <span class="ui">Load</span> stays, since
+        reaching the next piece is part of playing a set</td>
       </tr>
       <tr>
         <td><span class="ui">Open score folder</span></td>

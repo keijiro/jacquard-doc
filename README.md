@@ -31,6 +31,16 @@ gestures and the panels, `Docs/sequencer-spec.md` for what the tiles mean, and t
 is still the README's own prose. Nothing here is invented — when the app changes, the
 change is carried over rather than restated.
 
+Which build it describes
+------------------------
+
+The guide names the app's version on the page and in the two titles the browser and the
+link previews read, and beside it the short hash of the Jacquard commit the text was
+carried over from. The version is what a reader checks the app against; the hash is what
+says which build the panels on the page are panels of, which a version cannot say on its
+own — a release is several weeks of commits long, and the guide is written against one
+of them. Both move in the same change as the text they describe.
+
 Where the pictures come from
 ----------------------------
 
